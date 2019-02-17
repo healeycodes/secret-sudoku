@@ -2,8 +2,9 @@
     Secret Sudoku - github.com/healeycodes
 */
 
-const secretSudoku = () => {
-    this.sudoku = window.sudoku;
+const secretSudoku = (sudokuInjection) => {
+    // For testing (TODO)
+    this.sudoku = sudokuInjection || window.sudoku;
     window.location.hash = '';
     this.board = '';
     this.time = null;
@@ -36,7 +37,7 @@ const secretSudoku = () => {
     // Starts a new game!
     this.startGame = (diff = 0) => {
         this.time = Date.now();
-        this.board = Array.from(sudoku.generate(this.difficultyMap[diff]));
+        this.board = Array.from(this.sudoku.generate(this.difficultyMap[diff]));
         this.render();
     }
 
@@ -163,3 +164,5 @@ const secretSudoku = () => {
     this.startGame();
 }
 secretSudoku();
+
+module.exports = secretSudoku;

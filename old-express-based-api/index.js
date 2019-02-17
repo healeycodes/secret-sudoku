@@ -6,7 +6,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 /* Sudoku - https://github.com/apieceofbart/sudoku.js */
-const sudoku = require('./sudoku/sudoku');
+const sudoku = require('./sudoku/umd-sudoku');
 
 /* Request a puzzle of a certain difficulty
    @returns puzzle as continuous string*/
