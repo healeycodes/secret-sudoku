@@ -69,8 +69,8 @@ const secretSudoku = (sudokuInjection) => {
     }
 
     // Main render functions
-    this.squaresLeft = () => this.board.join('').match(/[^.]/g).length
-    this.completeness = () => `${this.squaresLeft()}/81`;
+    this.squaresFilled = () => this.board.join('').match(/[^.]/g).length
+    this.completeness = () => `${this.squaresFilled()}/81`;
     this.start = () => `Secret_Sudoku_~_${this.completeness()}_~_row:`;
     this.render = (extra = '') => {
         window.location.hash = `${this.start()}${this.rowMap[this.row]}__${this.prettifyRow(this.currRow(), this.cursor)}${extra}`;
@@ -155,6 +155,11 @@ const secretSudoku = (sudokuInjection) => {
             this.board[loc] = num;
         } else {
             return this.render(`_${this.cross}`);
+        }
+
+        // Board complete?
+        if (this.squaresFilled() === 81) {
+            alert(`💯 Board Solved! Try a harder difficulty with the full-stop key.`);
         }
 
         this.render(`_${this.tick}`);
