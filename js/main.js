@@ -3,7 +3,6 @@
 */
 
 const secretSudoku = () => {
-    this.ss = 'Secret_Sudoku_~_row:';
     this.sudoku = window.sudoku;
     window.location.hash = '';
     this.board = '';
@@ -24,10 +23,21 @@ const secretSudoku = () => {
         7: 'eight',
         8: 'nine_'
     }
+    this.difficulty = 1;
+    this.difficultyMap = {
+        0: 'easy',
+        1: 'medium',
+        2: 'hard',
+        3: 'very-hard',
+        4: 'insane',
+        5: 'inhuman'
+    }
 
-    this.startGame = (diff = 'easy') => {
+    // Starts a new game!
+    this.startGame = (diff = 0) => {
         this.time = Date.now();
-        this.board = Array.from(sudoku.generate(diff));
+        this.board = Array.from(sudoku.generate(this.difficultyMap[diff]));
+        this.render();
     }
 
     // @returns the focused row
@@ -57,9 +67,12 @@ const secretSudoku = () => {
         return pretty + '|';
     }
 
-    // Main render function
+    // Main render functions
+    this.squaresLeft = () => this.board.join('').match(/[^.]/g).length
+    this.completeness = () => `${this.squaresLeft()}/81`;
+    this.start = () => `Secret_Sudoku_~_${this.completeness()}_~_row:`;
     this.render = (extra = '') => {
-        window.location.hash = `${this.ss}${this.rowMap[this.row]}__${this.prettifyRow(this.currRow(), this.cursor)}${extra}`;
+        window.location.hash = `${this.start()}${this.rowMap[this.row]}__${this.prettifyRow(this.currRow(), this.cursor)}${extra}`;
     }
 
     // Navigation
@@ -105,8 +118,20 @@ const secretSudoku = () => {
             case 'ArrowLeft':
                 this.left();
                 break;
+            case ',':
+                if (this.difficulty < 5) {
+                    this.difficulty += 1;
+                }
+                this.startGame(this.difficulty);
+                break;
+            case '.':
+                if (this.difficulty > 0) {
+                    this.difficulty -= 1;
+                }
+                this.startGame(this.difficulty);
+                break;
             default:
-                // Play attempt
+                // Number keys, allow input attemps
                 const num = Number(e.key);
                 if (num > 0 || num < 10) {
                     this.play(this.cursor + this.row * 9, num)
@@ -115,11 +140,11 @@ const secretSudoku = () => {
         }
     });
 
-    // Attempt to fill in a square
+    // Attempts to fill in a square
     this.play = (loc, num) => {
         // Is the square free?
         if (this.board[loc] !== '.') {
-            return false;
+            return this.render(`_${this.cross}`);
         }
 
         let boardCopy = JSON.parse(JSON.stringify(this.board));
@@ -136,7 +161,5 @@ const secretSudoku = () => {
 
     // Create initial board
     this.startGame();
-    console.log(this.board);
-    this.render();
 }
 secretSudoku();
