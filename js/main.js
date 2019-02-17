@@ -165,4 +165,6 @@ const secretSudoku = (sudokuInjection) => {
 }
 secretSudoku();
 
-module.exports = secretSudoku;
+if (window === undefined) {
+    module.exports = secretSudoku;
+}
