@@ -4,7 +4,7 @@
 
 ![secret-sudoku](https://github.com/healeycodes/secret-sudoku/blob/master/preview.gif)
 
-Play the classic game of Sudoku in your URL bar!
+#### Play the classic game of Sudoku in your URL bar!
 
 A Sunday project, powered by `window.location.hash` and :coffee:
 
