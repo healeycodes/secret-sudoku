@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/healeycodes/secret-sudoku.svg?branch=master)](https://travis-ci.org/healeycodes/secret-sudoku)
+
 ### Secret Sudoku
 
 *Hidden from prying eyes..*
@@ -18,9 +20,11 @@ Avaliable @ https://healeycodes.github.io/secret-sudoku/
 
 ### Test
 
-Uses Jest to test main functions and brute-force play the game to completion on different difficulties.
-
 `npm test`
+
+- Uses Jest to test main functions and brute-force play the game to completion on different difficulties.
+
+- On GitHub, uses continious integration powered by Travis CI!
 
 ### Deploy
 
