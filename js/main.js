@@ -157,12 +157,12 @@ const secretSudoku = (sudokuInjection) => {
             return this.render(`_${this.cross}`);
         }
 
+        this.render(`_${this.tick}`);
+        
         // Board complete?
         if (this.squaresFilled() === 81) {
             alert(`💯 Board Solved! Try a harder difficulty with the full-stop key.`);
         }
-
-        this.render(`_${this.tick}`);
     }
 
     // Create initial board
