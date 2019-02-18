@@ -1,5 +1,5 @@
 ### secret-sudoku
 
-Play the classic game of Sudoku right in your URL bar!
+Play the classic game of Sudoku in your URL bar!
 
-README in progress..
+README in progress.
