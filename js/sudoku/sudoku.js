@@ -805,3 +805,7 @@
 
 // Pass whatever the root object is, lsike 'window' in browsers
 })(this);
+
+if (window === undefined) {
+    module.exports = this;
+}
