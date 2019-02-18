@@ -4,7 +4,7 @@
 
 *Hidden from prying eyes..*
 
-![secret-sudoku](https://github.com/healeycodes/secret-sudoku/blob/master/preview.gif)
+[![secret-sudoku](https://github.com/healeycodes/secret-sudoku/blob/master/preview.gif)](https://healeycodes.github.io/secret-sudoku/)
 
 #### Play the classic game of Sudoku in your URL bar!
 
