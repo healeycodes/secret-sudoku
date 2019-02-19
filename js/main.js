@@ -41,10 +41,9 @@ const secretSudoku = (injectWindow = false, injectSudoku = false) => {
         this.render();
     }
 
-    // @returns the focused row
     this.currRow = () => this.board.slice(this.row * 9, (this.row * 9) + 9);
 
-    // @returns a prettified row, with cursor placement
+    // Returns a prettified row, with cursor placement
     this.prettifyRow = (row, cursor) => {
         let pretty = '';
         for (var i = 0; i < row.length; i++) {
