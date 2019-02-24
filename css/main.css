@@ -1,3 +1,10 @@
+.pointer {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+}
+
 .blink {
     animation: blinker 1s linear 3;
 }
